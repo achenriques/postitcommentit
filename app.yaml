@@ -7,9 +7,9 @@ threadsafe: yes
 handlers:
 - url: /
   static_files: ./index.html
-  upload: \.\/index\.html
+  upload: index\.html
 
-- url: /commentImage*
+- url: /commentImage
   static_files: templates/commentImage.html
   upload: templates\/commentImage\.html
   login: required
