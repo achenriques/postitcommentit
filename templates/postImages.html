@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/css/bootstrap.js"></script>  -->
+    <title>Post It, Comment It</title>
+</head>
+<body>
+
+    <div class="jumbotron text-center">
+      <h1>Post It, Comment It!</h1>
+      <p>Comment all people´s photos arround the world.</p>
+    </div>
+
+    <div class="content">
+        <form method="post"
+            action="./home.html"
+            enctype="multipart/form-data">
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <b>Upload file: </b><input type="file" name="fileImage" required accept="image/x-png,image/gif,image/jpeg"/>
+                </div>
+            </div>
+            <div></div>
+            <div class="form-group">
+                <div>
+                    <b>Name: </b><input type="text" name="iName" placeholder="Write a name for the image" required maxlength="50"/>
+                    <br>
+                    <b>Description: </b><textarea type="text" name="iDescription" placeholder="Write here the image´s description. MAX 140." rows="3" cols="50" maxlength="140"></textarea>
+                </div>
+            </div>
+
+            <input class="btn btn-success" type="submit" value="Post-it!"/>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/css/bootstrap.js"></script>  -->
+
+    <title>Post It, Comment It</title>
+</head>
+<body>
+    <div class="jumbotron text-center">
+      <h1>Post It, Comment It!</h1>
+      <p>Comment all people´s photos arround the world.</p>
+    </div>
+
+    <div>
+            <div class="pull-left">
+                <a href="./home.html"><button class="btn btn-primary pad">Go Home</button></a>
+            </div>
+    </div>
+    <br>
+    <div class="row"></div>
+    <div class="container">
+        {% set cont = 1 %}
+        <div class="row">
+        {% for i in img %}
+            <div class="col-md-4">
+                <a href="./commentImage.html?id={{i.urlsafe()}}"><img class="img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
+                <b class="center">Image [ {{cont}} ]</b>
+                {% set cont = cont + 1 %}
+                <br>
+            </div>
+        {% else %}
+            <b>You don´t have any image yet.</b>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

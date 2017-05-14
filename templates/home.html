@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/css/bootstrap.js"></script>  -->
+
+    <title>Post It, Comment It</title>
+</head>
+<body>
+    <div class="jumbotron text-center">
+      <h1>Post It, Comment It!</h1>
+      <p>Comment all people´s photos arround the world.</p>
+    </div>
+
+    <div class="container">
+        {% if connected %}
+            <div>
+                <a href="./postImages.html"><button class="btn btn-primary">Post an image</button></a>
+                <a href="./myImages.html"><button class="btn btn-primary">View my uploaded images</button></a>
+                <a class="pull-right" href="{{logout}}">Log out</a><h5 class="pull-right">{{user}} ;</h5>
+                {% else %}
+                <h5 class="pull-right">{{user}} ;<a class="pull-right" href="{{sign}}">Sign In</a></h5>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row"></div>
+
+    <div class="container">
+        {% set cont = 1 %}
+        <div class="row">
+        {% for i in img %}
+            <div class="col-md-4">
+            <a href="./commentImage.html?id={{i.urlsafe()}}"><img class="img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
+            <br>
+            <b class="center">Image [ {{cont}} ]</b>
+            <br>
+            {% set cont = cont + 1 %}
+            </div>
+        {% else %}
+            <b>No images in the repository.</b>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

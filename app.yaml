@@ -1,0 +1,51 @@
+application: postitcommentit
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /
+  static_files: ./index.html
+  upload: \.\/index\.html
+
+- url: /commentImage*
+  static_files: templates/commentImage.html
+  upload: templates\/commentImage\.html
+  login: required
+  auth_fail_action: redirect
+
+- url: /home
+  static_files: templates/home.html
+  upload: templates\/home\.html
+
+- url: /postImages
+  static_files: templates/postImages.html
+  upload: templates\/postImages\.html
+
+- url: /myImages
+  static_files: templates/myImages.html
+  upload: templates\/myImages\.html
+  login: required
+  auth_fail_action: redirect
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: .*
+  script: main.app
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: "2.6"
+
+- name: markupsafe
+  version: "0.15"
+
+- name: PIL
+  version: latest
