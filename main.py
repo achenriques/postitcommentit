@@ -87,7 +87,7 @@ class HomeHandler(webapp2.RequestHandler):
             # im = images.resize(images.Image(i.image_bin), width=40, height=40)
         template_values = {"connected": connected, "user": nik, "sign": sign, "logout": logout, "img": to_show}
         jinja = jinja2.get_jinja2(app=self.app)
-        sleep(0.75)
+        sleep(1)
         self.response.write(jinja.render_template("home.html", **template_values))
 
     def post(self):
@@ -129,7 +129,7 @@ class HomeHandler(webapp2.RequestHandler):
             #    cont += 1
             #template_values = {"img": to_show}
             #jinja = jinja2.get_jinja2(app=self.app)
-            #sleep(0.25)
+            sleep(1)
             self.redirect("home.html")
         else:
             self.response.write("<script type='text/javascript'> "

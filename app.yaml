@@ -1,5 +1,5 @@
-application: postitcommentit
-version: 1
+# application: postitcommentit
+# version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -29,9 +29,21 @@ handlers:
   login: required
   auth_fail_action: redirect
 
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+- url: /bootstrap.css
+  static_files: static/css/bootstrap.css
+  upload: templates\/postImages\.html
+
+- url: /bootstrap.css
+  static_files: static/css/bootstrap.css
+  upload: static\/css\/bootstrap\.css
+
+- url: /bootstrap-theme.css
+  static_files: static/css/bootstrap-theme.css
+  upload: static\/css\/bootstrap-theme\.css
+
+- url: /bootstrap.js
+  static_files: static/css/bootstrap.js
+  upload: static\/css\/bootstrap\.js
 
 - url: .*
   script: main.app
