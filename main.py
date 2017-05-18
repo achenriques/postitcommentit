@@ -25,7 +25,6 @@ from google.appengine.api import users
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 
 
-
 class User(ndb.Model):
     name = ndb.StringProperty(required = True)
     surname = ndb.StringProperty(required=True)
@@ -110,7 +109,7 @@ class HomeHandler(webapp2.RequestHandler):
                 sleep(1)
                 self.redirect("home")
 
-            except RequestTooLargeError:
+            except:
                 self.redirect("error.html")
         else:
             self.response.write("<script type='text/javascript'> "
@@ -120,9 +119,15 @@ class HomeHandler(webapp2.RequestHandler):
 
 class PostImagesHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        if user:
+            connected = True
+        else:
+            connected = False
+        template_values = {"connected": connected}
         jinja = jinja2.get_jinja2(app=self.app)
         sleep(0.5)
-        self.response.write(jinja.render_template("postImages.html"))
+        self.response.write(jinja.render_template("postImages.html", **template_values))
 
     def post(self):
         None
@@ -191,8 +196,8 @@ class MyImagesHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', HomeHandler),
-    ('/postImages', PostImagesHandler),
     ('/home', HomeHandler),
+    ('/postImages', PostImagesHandler),
     ('/commentImage', CommentHandler),
     ('/myImages', MyImagesHandler)
 ], debug=True)

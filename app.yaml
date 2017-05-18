@@ -9,6 +9,10 @@ handlers:
   static_files: error.html
   upload: error\.html
 
+- url: /postImages
+  static_files: templates/postImages.html
+  upload: templates\/postImages\.html
+
 - url: /bootstrap.css
   static_files: static/css/bootstrap.css
   upload: templates\/postImages\.html
