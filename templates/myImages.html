@@ -17,9 +17,9 @@
 
     <div class="container">
     <div>
-            <div class="pull-left">
-                <a href="./home.html"><button class="btn btn-primary pad">Go Home</button></a>
-            </div>
+        <div class="pull-left">
+            <a href="./home"><button class="btn btn-primary pad">Go Home</button></a>
+        </div>
     </div>
     <br>&nbsp<br>&nbsp
     <div class="row"></div>
@@ -27,7 +27,7 @@
         <div class="row">
         {% for i in img %}
             <div class="col-md-4">
-                <a href="./commentImage.html?id={{i.urlsafe()}}"><img class="img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
+                <a href="./commentImage?id={{i.urlsafe()}}"><img class="img img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
                 <b class="center">Image [ {{cont}} ]</b>
                 {% set cont = cont + 1 %}
                 <br>

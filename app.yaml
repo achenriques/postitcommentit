@@ -5,29 +5,9 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /
-  static_files: ./index.html
-  upload: index\.html
-
-- url: /commentImage
-  static_files: templates/commentImage.html
-  upload: templates\/commentImage\.html
-  login: required
-  auth_fail_action: redirect
-
-- url: /home
-  static_files: templates/home.html
-  upload: templates\/home\.html
-
-- url: /postImages
-  static_files: templates/postImages.html
-  upload: templates\/postImages\.html
-
-- url: /myImages
-  static_files: templates/myImages.html
-  upload: templates\/myImages\.html
-  login: required
-  auth_fail_action: redirect
+- url: /error.html
+  static_files: error.html
+  upload: error\.html
 
 - url: /bootstrap.css
   static_files: static/css/bootstrap.css
@@ -45,6 +25,10 @@ handlers:
   static_files: static/css/bootstrap.js
   upload: static\/css\/bootstrap\.js
 
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
 - url: .*
   script: main.app
 

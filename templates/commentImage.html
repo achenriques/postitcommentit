@@ -17,9 +17,9 @@
     </div>
 
     <div class="container">
-        <a href="./home.html"><button class="btn btn-primary">Go Home</button></a>
+        <a href="./home"><button class="btn btn-primary">Go Home</button></a>
         {% if ismine %}
-            <form method="post" action="./myImages.html">
+            <form method="post" action="./myImages">
                 <input type="hidden" name="remove" value="{{ik}}">
                 <input class="btn btn-danger pull-right" type="submit" value="Delete this image from repository">
             </form>
@@ -49,7 +49,7 @@
         <div>
             {% if connected %}
 
-            <form id="formcomment" method="post" action="/commentImage.html?id={{ik}}">
+            <form id="formcomment" method="post" action="/commentImage?id={{ik}}">
                 <textarea id="comment" name="comment" type="text" required placeholder="Write here your comment. MAX 140." rows="3" cols="50" maxlength="140"></textarea>
                 <input class="btn btn-warning" type="submit" value="Comment-it">
             </form>

@@ -18,24 +18,33 @@
 
     <div class="content">
         <form method="post"
-            action="./home.html"
+            action="./home"
             enctype="multipart/form-data">
-
-            <div class="form-group">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <a href="./home"><button class="btn btn-primary pad">Go Home</button></a>
+                </div>
+            </div>
+            <br>&nbsp<br>&nbsp
+            <div>
                 <div class="col-md-12">
                     <b>Upload file: </b><input type="file" name="fileImage" required accept="image/x-png,image/gif,image/jpeg"/>
                 </div>
             </div>
-            <div></div>
-            <div class="form-group">
+            <br>&nbsp
+            <div>
                 <div>
-                    <b>Name: </b><input type="text" name="iName" placeholder="Write a name for the image" required maxlength="50"/>
-                    <br>
-                    <b>Description: </b><textarea type="text" name="iDescription" placeholder="Write here the image´s description. MAX 140." rows="3" cols="50" maxlength="140"></textarea>
+                    <div class="col-md-12">
+                        <b>Name: </b><input type="text" name="iName" placeholder="Write a name for the image" required maxlength="50"/>
+                        <br>&nbsp
+                        <b>Description: </b><textarea type="text" name="iDescription" placeholder="Write here the image´s description. MAX 140." rows="3" cols="50" maxlength="140"></textarea>
+                    </div>
+                    <br>&nbsp
                 </div>
             </div>
-
-            <input class="btn btn-success" type="submit" value="Post-it!"/>
+            <div class="col-md-12">
+                <input class="btn btn-success" type="submit" value="Post-it!"/>
+            </div>
         </form>
     </div>
 </body>

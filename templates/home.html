@@ -18,10 +18,11 @@
     <div class="container">
         {% if connected %}
             <div>
-                <a href="./postImages.html"><button class="btn btn-primary">Post an image</button></a>
-                <a href="./myImages.html"><button class="btn btn-primary">View my uploaded images</button></a>
+                <a href="./postImages"><button class="btn btn-primary">Post an image</button></a>
+                <a href="./myImages"><button class="btn btn-primary">View my uploaded images</button></a>
                 <a class="pull-right" href="{{logout}}">Log out</a><h5 class="pull-right">{{user}} ;</h5>
                 {% else %}
+                <h4 class="pull-left">You have to be logged to post Images on <b>PostItCommentIt!</b>.</h4>
                 <h5 class="pull-right">{{user}} ;<a class="pull-right" href="{{sign}}">Sign In</a></h5>
             </div>
         {% endif %}
@@ -30,7 +31,7 @@
         <div class="row">
         {% for i in img %}
             <div class="col-md-4">
-            <a href="./commentImage.html?id={{i.urlsafe()}}"><img class="img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
+            <a href="./commentImage?id={{i.urlsafe()}}"><img class="img img-thumbnail" src="data:image/png;base64,{{img[i].encode('base64')}}"></a>
             <br>
             <b class="center">Image [ {{cont}} ]</b>
             <br>

@@ -103,34 +103,15 @@ class HomeHandler(webapp2.RequestHandler):
             i.i_owner2 = str(users.get_current_user().user_id())
             try:
                 i.put()
+                # Retrieve images
+                # there i the need to encode the image data as base64:
+                # person.image_bin.encode("base64").
+                # It's done here in the JINJA2's template
+                sleep(1)
+                self.redirect("home")
+
             except RequestTooLargeError:
-                self.response.write("<script type='text/javascript'> "
-                                    "window.alert('Invalid image format.);"
-                                    "window.location = 'postImages.html'; </script>")
-            finally:
-                self.response.write("<script type='text/javascript'> "
-                                    "window.alert('Invalid image format.);"
-                                    "window.location = 'home.html'; </script>")
-            # Retrieve images
-            # there i the need to encode the image data as base64:
-            # person.image_bin.encode("base64").
-            # It's done here in the JINJA2's template
-            all_images = Image.select_all()
-            to_show = {}
-            cont = 0
-            # resize all images content
-            #for i in all_images:
-            #    img = images.Image(i.image_bin)
-            #    img.resize(width=40, height=40)
-            #    #img.im_feeling_lucky()
-            #    to_show[cont] = img.execute_transforms(output_encoding=images.PNG)
-            #    # if images.Image(all_images[i]).height > 40 or images.Image(all_images[i]).width > 40:
-            #    # im = images.resize(images.Image(i.image_bin), width=40, height=40)
-            #    cont += 1
-            #template_values = {"img": to_show}
-            #jinja = jinja2.get_jinja2(app=self.app)
-            sleep(1)
-            self.redirect("home.html")
+                self.redirect("error.html")
         else:
             self.response.write("<script type='text/javascript'> "
                                 "window.alert('Invalid selected image or empty name'); "
@@ -178,7 +159,7 @@ class CommentHandler(webapp2.RequestHandler):
         jinja = jinja2.get_jinja2(app=self.app)
         #template_values = {"Comments": comments}
         sleep(0.25)
-        to_url = "/commentImage.html?id="+c.c_image
+        to_url = "/commentImage?id="+c.c_image
         self.redirect(to_url)
 
 
@@ -206,16 +187,12 @@ class MyImagesHandler(webapp2.RequestHandler):
             j.key.delete()
         delete.delete()
         sleep(0.25)
-        self.redirect("./myImages.html")
+        self.redirect("./myImages")
 
 app = webapp2.WSGIApplication([
     ('/', HomeHandler),
     ('/postImages', PostImagesHandler),
-    ('/postImages.html', PostImagesHandler),
     ('/home', HomeHandler),
-    ('/home.html', HomeHandler),
     ('/commentImage', CommentHandler),
-    ('/commentImage.html', CommentHandler),
-    ('/myImages', MyImagesHandler),
-    ('/myImages.html', MyImagesHandler)
+    ('/myImages', MyImagesHandler)
 ], debug=True)

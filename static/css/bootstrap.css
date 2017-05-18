@@ -85,7 +85,7 @@ sub {
 }
 img {
   border: 0;
-  margin: 2px;
+  margin: 5px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -1585,8 +1585,8 @@ pre code {
 .container {
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 @media (min-width: 768px) {
   .container {
